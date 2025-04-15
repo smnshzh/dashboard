@@ -1,11 +1,12 @@
 // src/app/map/page.js
-"use client"; 
+"use client"; // این خط حتماً باید اضافه شود
 
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import dynamic from 'next/dynamic';
+import { useEffect } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// تنظیم آیکون‌های مارکر
+// تنظیم آیکون‌های Leaflet فقط در سمت کلاینت
 if (typeof window !== "undefined") {
   delete L.Icon.Default.prototype._getIconUrl;
   L.Icon.Default.mergeOptions({
@@ -14,6 +15,12 @@ if (typeof window !== "undefined") {
     shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
   });
 }
+
+// بارگذاری دینامیکی کامپوننت‌های Leaflet
+const MapContainer = dynamic(() => import('react-leaflet').then((mod) => mod.MapContainer), { ssr: false });
+const TileLayer = dynamic(() => import('react-leaflet').then((mod) => mod.TileLayer), { ssr: false });
+const Marker = dynamic(() => import('react-leaflet').then((mod) => mod.Marker), { ssr: false });
+const Popup = dynamic(() => import('react-leaflet').then((mod) => mod.Popup), { ssr: false });
 
 export default function MapPage() {
   // نقاط مشخص شده روی نقشه
