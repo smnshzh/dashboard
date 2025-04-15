@@ -1,26 +1,139 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* تنظیمات پایه برای RTL */
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* استایل‌های نوار ناوبری */
+.navbar {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+}
+
+.navbar-logo a {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  font-family: 'Tahoma', 'Arial', sans-serif;
+}
+
+.navbar-links {
+  display: none;
+  margin-right: auto; /* تغییر جهت برای RTL */
+  margin-left: 0; /* تغییر جهت برای RTL */
+}
+
+.navbar-link {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #333;
+  border-radius: 0.25rem;
+  transition: all 0.3s ease;
+  margin: 0 0.5rem 0 0; /* تغییر جهت برای RTL */
+}
+
+.navbar-link:hover {
+  background-color: #f3f4f6;
+  color: #2563eb;
+}
+
+.navbar-link.active {
+  background-color: #2563eb;
+  color: white;
+}
+
+/* استایل‌های موبایل */
+.navbar-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 0.5rem; /* تغییر جهت برای RTL */
+  margin-right: 0; /* تغییر جهت برای RTL */
+}
+
+.navbar-mobile {
+  display: none;
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: right; /* تراز متن به راست */
+}
+
+.navbar-mobile-link {
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+/* استایل‌های دسکتاپ */
+@media (min-width: 768px) {
+  .navbar-links {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .navbar-toggle {
+    display: none;
+  }
+  
+  .navbar-mobile {
+    display: none !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* آیکون همبرگر */
+.navbar-toggle-icon {
+  width: 24px;
+  height: 2px;
+  background-color: #333;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggle-icon::before,
+.navbar-toggle-icon::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: #333;
+  transition: all 0.3s ease;
+  right: 0; /* تغییر جهت برای RTL */
+}
+
+.navbar-toggle-icon::before {
+  transform: translateY(-6px);
+}
+
+.navbar-toggle-icon::after {
+  transform: translateY(6px);
+}
+
+.navbar-toggle-icon.open {
+  background: transparent;
+}
+
+.navbar-toggle-icon.open::before {
+  transform: rotate(45deg);
+}
+
+.navbar-toggle-icon.open::after {
+  transform: rotate(-45deg);
 }

@@ -32,7 +32,7 @@ export default function MapPage() {
 
   return (
     <div style={{ height: '100vh', width: '100%' }}>
-      <h1 style={{ textAlign: 'center' }}>نقشه با Next.js و Leaflet</h1>
+      
       <MapContainer
         center={[35.6892, 51.3890]} // مرکز نقشه
         zoom={6}
