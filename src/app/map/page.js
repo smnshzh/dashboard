@@ -1,5 +1,5 @@
 // src/app/map/page.js
-"use client"; // این خط حتماً باید اضافه شود
+"use client"; 
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
